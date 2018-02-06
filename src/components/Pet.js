@@ -1,30 +1,20 @@
-import React from 'react';
 
-class Pet extends React.Component {
-  constructor() {
-    super();
+javascript:(function(){
+var numOfForms = prompt('Is this for the first, second, or third trait box?(1, 2, or 3)') - 1;
+var formValues = prompt('Enter values for traits.');
+var traitValues = formValues.split("on");
+var currentForm = document.getElementsByClassName("form-default four columns ng-scope");
+var currentDiv = currentForm[numOfForms].getElementsByClassName("two-column-controls gx-input");
+var btn = document.getElementsByClassName("icon-plus btn-small ng-binding");
+const enterValues = function(){
+  for (var i = 0; i < traitValues.length; i ++) {
+    btn[numOfForms].click();
+    let input = currentDiv[(i * 2)].firstElementChild;
+    input.value = traitValues[i];
+    console.log(input)
   }
-
-  render() {
-    return (
-      <div className="card">
-        <div className="content">
-          <a className="header">Pet name (gender: ♂ or ♀)</a>
-          <div className="meta">
-            <span className="date">Pet type</span>
-          </div>
-          <div className="description">
-            <p>Age: </p>
-            <p>Weight: </p>
-          </div>
-        </div>
-        <div className="extra content">
-          <button className="ui primary button">Adopt pet</button>
-          <button className="ui disabled button">Already adopted</button>
-        </div>
-      </div>
-    );
-  }
-}
+};
+enterValues();
+})();
 
 export default Pet;
