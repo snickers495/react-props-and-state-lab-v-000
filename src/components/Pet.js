@@ -1,20 +1,34 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 
-javascript:(function(){
-var numOfForms = prompt('Is this for the first, second, or third trait box?(1, 2, or 3)') - 1;
-var formValues = prompt('Enter values for traits.');
-var traitValues = formValues.split("on");
-var currentForm = document.getElementsByClassName("form-default four columns ng-scope");
-var currentDiv = currentForm[numOfForms].getElementsByClassName("two-column-controls gx-input");
-var btn = document.getElementsByClassName("icon-plus btn-small ng-binding");
-const enterValues = function(){
-  for (var i = 0; i < traitValues.length; i ++) {
-    btn[numOfForms].click();
-    let input = currentDiv[(i * 2)].firstElementChild;
-    input.value = traitValues[i];
-    console.log(input)
+class Pet extends React.Component {
+  constructor() {
+    super();
   }
-};
-enterValues();
-})();
+
+  render() {
+    const pet = this.props.pet
+    const isAdopted = this.props.isAdopted;
+    const gender = pet.gender === 'male' ? '♂' : '♀';
+    return (
+      <div className="card">
+        <div className="content">
+          <a className="header">{pet.name} {gender}</a>
+          <div className="meta">
+            <span className="date">{pet.type}</span>
+          </div>
+          <div className="description">
+            <p>Age: {pet.age}</p>
+            <p>Weight: {pet.weight}</p>
+          </div>
+        </div>
+        <div className="extra content">
+        {isAdopted ? <button className="ui disabled button">Already adopted</button>
+          : <button className="ui primary button">Adopt pet</button>}
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Pet;
