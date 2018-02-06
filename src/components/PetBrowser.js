@@ -12,7 +12,7 @@ class PetBrowser extends React.Component {
       <div className="ui cards">
       {pets.map(pet => {
         return(
-          <Pet pet={pet} isAdopted={adoptedPets.includes(pet.id)}/>
+          <Pet pet={pet} isAdopted={adoptedPets.includes(pet.id)}  onAdoptPet={onAdoptPet}/>
         )
       })}
       </div>
