@@ -15,6 +15,9 @@ class App extends React.Component {
       }
     };
   }
+  onAdoptPet = (petId) =>{
+    this.setState({adoptedPets: [...this.state.adoptedPets, petId] })
+  }
 
   render() {
     return (
@@ -28,7 +31,7 @@ class App extends React.Component {
               <Filters />
             </div>
             <div className="twelve wide column">
-              <PetBrowser pets={this.state.pets} adoptedPets={this.state.adoptedPets}/>
+              <PetBrowser pets={this.state.pets} adoptedPets={this.state.adoptedPets} onAdoptPet={this.onAdoptPet}/>
             </div>
           </div>
         </div>
